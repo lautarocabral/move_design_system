@@ -1,6 +1,6 @@
 // lib/src/template/success_page.dart
 import 'package:flutter/material.dart';
-import '../theming/app_theme.dart';
+import '../theming/app_theme_provider.dart';
 
 class SuccessPage extends StatelessWidget {
   final String title;
@@ -18,25 +18,29 @@ class SuccessPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
+    final theme = AppThemeProvider.of(context);
 
     return Scaffold(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colors.background,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(24),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Icons.check_circle, color: theme.primaryColor, size: 64),
+              Icon(Icons.check_circle, color: theme.colors.primary, size: 64),
               const SizedBox(height: 20),
-              Text(title, style: theme.titleStyle),
+              Text(title, style: theme.textStyles.headline),
               const SizedBox(height: 10),
-              Text(message, style: theme.bodyStyle),
+              Text(message, style: theme.textStyles.body),
               const SizedBox(height: 30),
               ElevatedButton(
                 onPressed: onButtonPressed,
-                style: theme.buttonStyle,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: theme.colors.primary,
+                  foregroundColor: theme.colors.onPrimary,
+                  textStyle: theme.textStyles.button,
+                ),
                 child: Text(buttonText),
               ),
             ],

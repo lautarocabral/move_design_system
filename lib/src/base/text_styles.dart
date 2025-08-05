@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import '../colors.dart';
+import 'app_colors.dart';
 
-class AppTextStyles {
-  static const title = TextStyle(
-    fontSize: 20,
-    fontWeight: FontWeight.bold,
-    color: AppColors.textPrimary,
-  );
+// ...existing code...
+TextStyle titleStyle(AppColors colors) => TextStyle(
+  fontSize: 20,
+  fontWeight: FontWeight.bold,
+  color: colors.onBackground,
+);
 
-  static const body = TextStyle(
-    fontSize: 16,
-    color: AppColors.textSecondary,
-  );
+TextStyle bodyStyle(AppColors colors) => TextStyle(
+  fontSize: 16,
+  color: colors.onSurface,
+);
 
-  static const button = TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.w600,
-    color: Colors.white,
-  );
-}
+TextStyle buttonStyle(AppColors colors) => TextStyle(
+  fontSize: 16,
+  fontWeight: FontWeight.w600,
+  color: colors.onPrimary,
+);
+// Other methods and properties
