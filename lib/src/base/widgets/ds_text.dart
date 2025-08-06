@@ -154,3 +154,41 @@ class DSCaption extends StatelessWidget {
     );
   }
 }
+
+class DSAppBarTitle extends StatelessWidget {
+  final String data;
+  final TextAlign? textAlign;
+  final int? maxLines;
+  final TextOverflow? overflow;
+  final FontWeight? fontWeight;
+  final Color? color;
+
+  const DSAppBarTitle(
+    this.data, {
+    super.key,
+    this.textAlign,
+    this.maxLines,
+    this.overflow,
+    this.fontWeight,
+    this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = AppThemeProvider.of(context);
+    TextStyle baseStyle = theme.textStyles.headline;
+    if (fontWeight != null) {
+      baseStyle = baseStyle.copyWith(fontWeight: fontWeight);
+    }
+    if (color != null) {
+      baseStyle = baseStyle.copyWith(color: color);
+    }
+    return Text(
+      data,
+      style: baseStyle,
+      textAlign: textAlign,
+      maxLines: maxLines,
+      overflow: overflow,
+    );
+  }
+}
